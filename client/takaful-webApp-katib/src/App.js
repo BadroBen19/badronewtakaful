@@ -15,6 +15,7 @@ import Home from "./Home";
 import Navbar from "./Navbar";
 import Categories from "./Pages/Categories";
 import DonationForm from "./Pages/DonationForm";
+import Testimonies from "./Pages/Testimonies";
 
 import c1 from "./images/c1.png";
 import c2 from "./images/c2.png";
@@ -110,6 +111,7 @@ function App() {
             }
           />
           <Route path="/" element={<Home />} />
+          <Route path="/reviews" element={<Testimonies/>}/>
         </Routes>
 
         {/* Footer  */}
