@@ -1,40 +1,137 @@
-import React, { useState } from "react";
-import donation from "./handp.png";
+import React, { useState, useEffect, useCallback } from "react";
 import { FaDollarSign } from "react-icons/fa6";
 import "./DonationForm.css";
+import axios from "axios";
 
-const DonationForm = (props) => {
+const InputField = ({ name, placeholder, value, onChange, type = "text" }) => (
+  <input
+    type={type}
+    placeholder={placeholder}
+    name={name}
+    value={value}
+    onChange={onChange}
+  />
+);
+
+const RecipientProfile = ({ photoSrc, userName }) => (
+  <div className="recipient-profile">
+    <img src={photoSrc} alt="Recipient Profile" />
+    <text>{userName}</text>
+  </div>
+);
+
+const DonationForm = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    cardNumber: "",
+    amount: "",
+  });
   const [isEmailValid, setIsEmailValid] = useState(true);
+  const [photoSrc, setPhotoSrc] = useState("");
+  const [title, setTitle] = useState("");
+  const [userName, setUserName] = useState("");
 
-  const handleEmailValidation = (event) => {
-    setIsEmailValid(event.target.checkValidity());
-  };
+  useEffect(() => {
+    axios
+      .get("link t api")
+      .then((response) => {
+        setPhotoSrc(response.data.photoSrc);
+        setTitle(response.data.title);
+        setUserName(response.data.userName);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const handleSubmit = useCallback(
+    (event) => {
+      event.preventDefault();
+      axios
+        .post("link ta post api", formData)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    },
+    [formData]
+  );
+
+  const handleChange = useCallback(
+    (event) => {
+      setFormData({ ...formData, [event.target.name]: event.target.value });
+    },
+    [formData]
+  );
 
   return (
     <div className="root">
       <div className="container">
         <div className="photo">
-          <img src={donation} alt="" />
+          <img src={photoSrc} alt="" />
         </div>
         <div className="donation-form">
-          <div className="title">{props.title}</div>
-          <div className="recipient-profile">
-            <img src={donation} alt="Recipient Profile" />
-            <text>{props.UserName}</text>
-          </div>
-          <div className="inputGroup">
-            <input type="text" placeholder="First Name" />
-            <input type="text" placeholder="Last Name" />
-          </div>
-          <input
-            type="email"
-            placeholder="Email"
-            onBlur={handleEmailValidation}
-          />
-          <input type="password" placeholder="Password" />
-          <input type="id" placeholder="Card number" required />
-          <input type="number" placeholder="the amount" required />
-          <input className="bottom" type="submit" value="submit" />
+          <div className="title">{title}</div>
+          <RecipientProfile photoSrc={photoSrc} userName={userName} />
+          <form onSubmit={handleSubmit}>
+            <div className="inputGroup">
+              <InputField
+                name="firstName"
+                placeholder="First Name"
+                value={formData.firstName}
+                onChange={handleChange}
+              />
+              <InputField
+                name="lastName"
+                placeholder="Last Name"
+                value={formData.lastName}
+                onChange={handleChange}
+              />
+            </div>
+            <InputField
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onBlur={(event) => setIsEmailValid(event.target.checkValidity())}
+              onChange={handleChange}
+            />
+            <InputField
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+            <InputField
+              type="id"
+              name="cardNumber"
+              placeholder="Card number"
+              value={formData.cardNumber}
+              required
+              onChange={handleChange}
+            />
+            <InputField
+              type="number"
+              name="amount"
+              placeholder="the amount"
+              value={formData.amount}
+              required
+              onChange={handleChange}
+            />
+            <FaDollarSign
+              style={{
+                marginLeft: "5px",
+                transform: "translateX(+1800%) translateY(-250%)",
+              }}
+            />
+            <input className="bottom" type="submit" value="submit" />
+          </form>
         </div>
       </div>
     </div>
