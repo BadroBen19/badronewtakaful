@@ -5,6 +5,7 @@
 
 .userInfos img {
   margin-right: 10px;
+  border-radius: 50%;
 }
 
 .userInfos h1 {
@@ -25,4 +26,5 @@
   letter-spacing: -0.015em;
   text-align: left;
   color: rgba(2, 48, 71, 1);
+  margin: 20px;
 }

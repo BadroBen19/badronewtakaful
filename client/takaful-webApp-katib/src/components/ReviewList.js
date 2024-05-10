@@ -1,6 +1,7 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import Review from "./Review";
+
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import Review from './Review';
 
 const ReviewList = () => {
   const [reviews, setReviews] = useState([]);
@@ -17,9 +18,19 @@ const ReviewList = () => {
   }, []);
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap" }}>
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       {reviews.map((review, index) => (
-        <div key={index} style={{ width: "50%" }}>
+        <div
+          key={index}
+          style={{ width: "50%", display: "flex", justifyContent: "center" }}
+        >
           <Review
             imgUrl={review.imgUrl}
             userName={review.userName}
@@ -30,5 +41,4 @@ const ReviewList = () => {
     </div>
   );
 };
-
 export default ReviewList;
