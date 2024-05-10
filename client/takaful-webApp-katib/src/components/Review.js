@@ -12,6 +12,7 @@ const Review = (props) => {
         flexDirection: "column",
         alignItems: "start",
         padding: "20px",
+        margin: "20px",
       }}
     >
       <div className="userInfos">

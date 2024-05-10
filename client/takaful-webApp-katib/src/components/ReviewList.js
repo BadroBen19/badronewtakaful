@@ -1,14 +1,13 @@
-
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Review from './Review';
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Review from "./Review";
 const ReviewList = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/reviews') // replace with your API endpoint
-      .then(response => {
+    axios
+      .get("http://localhost:3001/getReviews") // replace with your API endpoint
+      .then((response) => {
         setReviews(response.data);
       })
       .catch((error) => {
@@ -17,9 +16,19 @@ const ReviewList = () => {
   }, []);
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap" }}>
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       {reviews.map((review, index) => (
-        <div key={index} style={{ width: "50%" }}>
+        <div
+          key={index}
+          style={{ width: "50%", display: "flex", justifyContent: "center" }}
+        >
           <Review
             imgUrl={review.imgUrl}
             userName={review.userName}
@@ -30,5 +39,4 @@ const ReviewList = () => {
     </div>
   );
 };
-
 export default ReviewList;
