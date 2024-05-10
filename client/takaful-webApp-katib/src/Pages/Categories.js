@@ -1,16 +1,17 @@
+import React from "react";
 import CardGridHeader from "../components/CardGridHeader.js";
 import CategoriesBody from "../components/CategoriesBody";
 
-const Categories = (props) => {
+const Categories = ({ category }) => {
   return (
     <div>
       <CardGridHeader
-        headerTitle={props.headerTitle}
-        iconlink={props.iconlink}
+        headerTitle={category.title}
+        iconlink={category.icon}
       />
       <CategoriesBody
-        bimageUrl={props.bimageUrl}
-        CanotParagraphe={props.CanotParagraphe}
+        bimageUrl={category.imageUrl}
+        CanotParagraphe={category.description}
       />
     </div>
   );
