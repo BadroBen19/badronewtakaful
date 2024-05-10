@@ -1,8 +1,8 @@
-const signModel = require("../models");
+const signModel = require("../models/signModel");
 
 exports.getCardInfo = (req, res) => {
   signModel
     .find()
-    .then((users) => res.json(users))
+    .then((user) => res.json(user))
     .catch((err) => res.json(err));
 };

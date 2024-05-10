@@ -3,12 +3,6 @@ const validator = require("validator");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 
-const reviewSchema = new mongoose.Schema({
-  userName: { type: String },
-  reviewText: { type: String },
-  imgUrl: { type: [String] },
-});
-
 const signUpSchema = new mongoose.Schema({
   user: { type: String, required: true, unique: true, trim: true },
   Email: {
@@ -93,5 +87,3 @@ signUpSchema.methods.createPasswordResetToken = function () {
 //
 const signModel = mongoose.model("signModel", signUpSchema);
 module.exports = signModel;
-const reviewModel = mongoose.model("reviewModel", reviewSchema);
-module.exports = reviewModel;

@@ -6,7 +6,6 @@ const cardRoutes = require("./routes/cardRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const reviewModel = require("./models");
 dotenv.config({ path: "./config.env" });
 
 mongoose
@@ -30,26 +29,8 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/", authRoutes);
 app.use("/", reviewRoutes);
-
 app.use("/tour", tourRoutes);
 app.use("/", cardRoutes);
-
-const newReview = new reviewModel({
-  userName: "JohnDoe", // Example username
-  imgUrl: "https://example.com/user.jpg", // Example image URL
-  reviewText: "This is a great product!", // Example review text
-  // Add other fields of your Review model as needed
-});
-
-// Save the new review to the database
-newReview
-  .save()
-  .then((savedReview) => {
-    console.log("Review saved successfully:", savedReview);
-  })
-  .catch((error) => {
-    console.error("Error saving review:", error);
-  });
 
 app.listen(3001, () => {
   console.log(`App running on port 3001...`);

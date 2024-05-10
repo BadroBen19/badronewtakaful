@@ -1,4 +1,4 @@
-const reviewModel = require("../models");
+const reviewModel = require("../models/reviewModel");
 
 exports.getReview = (req, res) => {
   reviewModel
