@@ -1,0 +1,143 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+/*___________________________________________________________--navbar____________________________*/
+
+a {
+  text-decoration: none;
+  color: rgba(2, 48, 71, 1);
+  font-size: 1.2rem;
+
+  text-transform: uppercase;
+}
+/*__________________________________footer___________________________----*/
+footer {
+  background-color: rgba(2, 48, 71, 1);
+  padding: 30px 10px;
+}
+.containerfooter {
+  margin: 10px 25px;
+}
+.logof {
+  width: 100px;
+  height: auto;
+  margin-bottom: 4px;
+}
+.f {
+  width: 13px;
+  height: auto;
+  margin: 2px;
+}
+.reseaux {
+  display: flex;
+  flex-direction: row;
+}
+
+.r {
+  padding: 6px 0;
+  color: rgba(33, 158, 188, 1);
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.reas1,
+.reas2,
+.reas3,
+.reas4 {
+  display: flex;
+  flex-direction: column;
+}
+.reas {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.we {
+  padding: 6px;
+  text-align: center;
+  font-size: 6px;
+  color: rgba(33, 158, 188, 1);
+}
+
+.hadra {
+  text-transform: capitalize;
+  color: aliceblue;
+  padding: 4px;
+  font-size: 6px;
+
+  word-wrap: break-word;
+}
+
+.fy {
+  font-size: 8px;
+  color: rgba(33, 158, 188, 1);
+  font-weight: bold;
+}
+.fory {
+  display: flex;
+  flex-direction: column;
+}
+.part1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 5px 5px 0;
+}
+hr {
+  margin: 10px 15px;
+}
+/*_____________________________3labal desktop____________________________________*/
+@media screen and (min-width: 920px) {
+  /*_____________________________footer____________________________________*/
+  .containerfooter {
+    margin: 15px 60px;
+  }
+  .logof {
+    width: 200px;
+    height: auto;
+  }
+
+  .f {
+    width: 40px;
+    height: auto;
+    margin: 4px;
+  }
+
+  .r {
+    padding: 6px 0;
+    color: rgba(33, 158, 188, 1);
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+  }
+
+  .we {
+    padding: 6px;
+    text-align: center;
+    font-size: 15px;
+    color: rgba(33, 158, 188, 1);
+  }
+
+  .hadra {
+    color: aliceblue;
+    padding: 6px;
+    font-size: 14px;
+
+    word-wrap: break-word;
+  }
+
+  .fy {
+    font-size: 20px;
+    color: rgba(33, 158, 188, 1);
+    font-weight: bold;
+  }
+
+  hr {
+    margin: 40px 50px;
+  }
+}
